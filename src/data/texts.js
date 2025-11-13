@@ -1,4 +1,4 @@
-const texts = {
+export const texts = {
   en: {
     title: "Anagrams",
     chooseLanguage: "Choose language:",
@@ -30,5 +30,3 @@ const texts = {
     foundWords: "Palabras encontradas:",
   },
 };
-
-export default texts;
