@@ -1,7 +1,6 @@
 import { useGlobalStore } from "../../stores/globalStore.js";
-import { texts } from "../../data/texts.js";
+import { texts } from "../../../../backend/src/data/texts.js";
 import { useEffect, useState } from "react";
-
 import Language from "./Language.jsx";
 import Difficulty from "./Difficulty.jsx";
 

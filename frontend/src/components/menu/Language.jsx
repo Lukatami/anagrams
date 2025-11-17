@@ -1,4 +1,4 @@
-import { languages } from "../../data/languages.js";
+import { languages } from "../../../../backend/src/data/languages.js";
 import { useGlobalStore } from "../../stores/globalStore.js";
 import ReactCountryFlag from "react-country-flag";
 

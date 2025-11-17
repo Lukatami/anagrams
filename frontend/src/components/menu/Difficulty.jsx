@@ -1,6 +1,6 @@
 import { useGlobalStore } from "../../stores/globalStore.js";
-import { texts } from "../../data/texts.js";
-import { difficulties } from "../../data/difficulties.js";
+import { texts } from "../../../../backend/src/data/texts.js";
+import { difficulties } from "../../../../backend/src/data/difficulties.js";
 
 function Difficulty() {
   const { language, difficulty, setSelectedDifficulty } = useGlobalStore();
