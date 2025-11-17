@@ -1,4 +1,4 @@
-async function wordChecker(word, lang) {
+export async function wordChecker(word, lang) {
   try {
     const response = await fetch(
       `https://freedictionaryapi.com/api/v1/entries/${lang}/${word}`
@@ -18,18 +18,18 @@ async function wordChecker(word, lang) {
     }
 
     return false;
-  } catch {
+  } catch (error) {
     console.error(error);
     return false;
   }
 }
 
 // Test wordChecker()
-function testWordChecker () {
-    wordChecker("dog", "en").then(result => console.log(`Word "dog" exists for "en" language, result: ` + result))
-    wordChecker("fsdf", "en").then(result => console.log(`Word "fsdf" does not exist for "en" language, result: ` + result))
-    wordChecker("чай", "ru").then(result => console.log(`Word "чай" exists for "ru" language, result: ` + result))
-    wordChecker("вапф", "ru").then(result => console.log(`Word "вапф" does not exist for "ru" language, result: ` + result))
-    wordChecker("gato", "es").then(result => console.log(`Word "gato" exists for "es" language, result: ` + result))
-    wordChecker("sfgd", "es").then(result => console.log(`Word "sfgd" does not exist for "es" language, result: ` + result))
-}
+// function testWordChecker () {
+//     wordChecker("dog", "en").then(result => console.log(`Word "dog" exists for "en" language, result: ` + result))
+//     wordChecker("fsdf", "en").then(result => console.log(`Word "fsdf" does not exist for "en" language, result: ` + result))
+//     wordChecker("чай", "ru").then(result => console.log(`Word "чай" exists for "ru" language, result: ` + result))
+//     wordChecker("вапф", "ru").then(result => console.log(`Word "вапф" does not exist for "ru" language, result: ` + result))
+//     wordChecker("gato", "es").then(result => console.log(`Word "gato" exists for "es" language, result: ` + result))
+//     wordChecker("sfgd", "es").then(result => console.log(`Word "sfgd" does not exist for "es" language, result: ` + result))
+// }

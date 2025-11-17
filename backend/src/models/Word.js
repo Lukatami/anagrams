@@ -21,7 +21,7 @@ wordSchema.pre("save", async function (next) {
     });
     if (existingWord) {
       const error = new Error(
-        `${this.word} for ${this.lang} already exists in DB`
+        `Word: "${this.word}" for "${this.lang}" language already exists in DB`
       );
       error.existingWord = existingWord;
       return next(error);
