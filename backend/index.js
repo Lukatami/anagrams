@@ -15,7 +15,6 @@ const port = process.env.PORT || 3000;
 app.use("/api/users", usersRouter);
 app.use("/api/words", wordsRouter);
 
-
 app.get("/", (req, res) => {
   res.status(200).send("Hello world!");
 });
