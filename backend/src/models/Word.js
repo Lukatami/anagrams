@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const wordSchema = new Schema(
+const WordSchema = new Schema(
   {
     word: { type: String, required: true, trim: true, lowercase: true },
     lang: {
@@ -14,7 +14,7 @@ const wordSchema = new Schema(
   { timestamps: true }
 );
 
-wordSchema.pre("save", async function (next) {
+WordSchema.pre("save", async function (next) {
   if (this.isNew) {
     const existingWord = await mongoose.model("Word").findOne({
       word: this.word,
@@ -31,4 +31,4 @@ wordSchema.pre("save", async function (next) {
   next();
 });
 
-export default mongoose.model("Word", wordSchema);
+export default mongoose.model("Word", WordSchema);

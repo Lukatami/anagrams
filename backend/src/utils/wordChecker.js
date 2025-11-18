@@ -5,6 +5,7 @@ export async function wordChecker(word, lang) {
     );
 
     if (!response.ok) {
+      console.warn(`API Error: ${response.status} ${response.statusText}`);
       return false;
     }
 
@@ -19,7 +20,7 @@ export async function wordChecker(word, lang) {
 
     return false;
   } catch (error) {
-    console.error(error);
+    console.error("Request failed:", error);
     return false;
   }
 }

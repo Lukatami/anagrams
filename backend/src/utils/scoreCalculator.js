@@ -29,18 +29,18 @@ function scoreCalculator(word, difficulty) {
 }
 
 // Test scoreCalculator()
-function testScoreCalculator () {
-    console.log("For 'easy' difficulty word 'cat' scores (1): " + scoreCalculator("cat", "easy")); 
-    console.log("For 'medium' difficulty word 'cat' scores (0): " + scoreCalculator("cat", "medium"));
-    console.log("For 'hard' difficulty word 'cat' scores (0): " + scoreCalculator("cat", "hard"));
+// function testScoreCalculator () {
+//     console.log("For 'easy' difficulty word 'cat' scores (1): " + scoreCalculator("cat", "easy")); 
+//     console.log("For 'medium' difficulty word 'cat' scores (0): " + scoreCalculator("cat", "medium"));
+//     console.log("For 'hard' difficulty word 'cat' scores (0): " + scoreCalculator("cat", "hard"));
 
-    console.log("For 'easy' difficulty word 'home' scores (2): " + scoreCalculator("home", "easy"));
-    console.log("For 'medium' difficulty word 'home' scores (3): " + scoreCalculator("home", "medium"));
-    console.log("For 'hard' difficulty word 'home' scores (0): " + scoreCalculator("home", "hard"));
+//     console.log("For 'easy' difficulty word 'home' scores (2): " + scoreCalculator("home", "easy"));
+//     console.log("For 'medium' difficulty word 'home' scores (3): " + scoreCalculator("home", "medium"));
+//     console.log("For 'hard' difficulty word 'home' scores (0): " + scoreCalculator("home", "hard"));
 
-    console.log("For 'hard' difficulty word 'house' scores (6): " + scoreCalculator("house", "hard"));
+//     console.log("For 'hard' difficulty word 'house' scores (6): " + scoreCalculator("house", "hard"));
     
-    console.log("For 'easy' difficulty word 'international' scores (5): " + scoreCalculator("international", "easy"));
-    console.log("For 'medium' difficulty word 'international' scores (8): " + scoreCalculator("international", "medium"));
-    console.log("For 'hard' difficulty word 'international' scores (10): " + scoreCalculator("international", "hard"))
-};
+//     console.log("For 'easy' difficulty word 'international' scores (5): " + scoreCalculator("international", "easy"));
+//     console.log("For 'medium' difficulty word 'international' scores (8): " + scoreCalculator("international", "medium"));
+//     console.log("For 'hard' difficulty word 'international' scores (10): " + scoreCalculator("international", "hard"))
+// };
