@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useGameStore } from "../../stores/gameStore";
+import { useGameStore } from "../stores/gameStore";
 
 function ProtectedGameRoute({ children }) {
   const { isGameActive, gameOver } = useGameStore();

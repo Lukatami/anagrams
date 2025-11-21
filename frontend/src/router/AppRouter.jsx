@@ -11,9 +11,7 @@ const SettingsMenu = lazy(() =>
   import("../components/settings/SettingsMenu.jsx")
 );
 const GameBoard = lazy(() => import("../components/game/GameBoard.jsx"));
-const ProtectedGameRoute = lazy(() =>
-  import("../components/game/ProtectedGameRoute.jsx")
-);
+const ProtectedGameRoute = lazy(() => import("./ProtectedGameRoute.jsx"));
 const LogInSuccess = lazy(() => import("../components/user/LogInSuccess.jsx"));
 
 const LoadingFallback = () => <div>Loading...</div>;
