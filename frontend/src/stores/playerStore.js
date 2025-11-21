@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware"; // ДОБАВЛЯЕМ PERSIST
+import { persist } from "zustand/middleware";
 
 const initialPlayerState = {
   playerId: "",
@@ -37,7 +37,7 @@ export const usePlayerStore = create(
           const BASE_API_URL =
             import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-          const response = await fetch(`${BASE_API_URL}/api/auth/me`, {
+          const response = await fetch(`${BASE_API_URL}/api/users/me`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

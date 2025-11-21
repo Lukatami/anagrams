@@ -40,7 +40,7 @@ export const useWordsStore = create((set, get) => ({
       }
 
       const baseWord = data.baseWord.toLowerCase();
-      const baseWordId = data.id;
+      const baseWordId = data._id;
       const availableLetters = baseWord.split("");
 
       set({

@@ -4,8 +4,6 @@ import GameDifficulty from "./GameDifficulty.jsx";
 import StartGameButton from "./StartGameButton.jsx";
 import GameLanguage from "./GameLanguage.jsx";
 
-import "./mainMenu.css"
-
 function MainMenu({}) {
   const { interfaceLanguage } = useGlobalStore();
 

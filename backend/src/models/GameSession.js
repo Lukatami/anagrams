@@ -25,28 +25,26 @@ const GameSessionSchema = new Schema(
       ref: "User",
       required: true,
     },
-    gameData: {
-      baseWord: {
-        type: Schema.Types.ObjectId,
-        ref: "BaseWord",
-        required: true,
-      },
-      foundWords: [FoundWordSchema],
-      totalScore: {
-        type: Number,
-        default: 0,
-        min: 0,
-      },
-      difficulty: {
-        type: String,
-        enum: ["easy", "medium", "hard"],
-        required: true,
-      },
-      language: {
-        type: String,
-        enum: ["en", "ru", "es"],
-        required: true,
-      },
+    baseWord: {
+      type: Schema.Types.ObjectId,
+      ref: "BaseWord",
+      required: true,
+    },
+    foundWords: [FoundWordSchema],
+    totalScore: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    difficulty: {
+      type: String,
+      enum: ["easy", "medium", "hard"],
+      required: true,
+    },
+    language: {
+      type: String,
+      enum: ["en", "ru", "es"],
+      required: true,
     },
   },
   { timestamps: true }

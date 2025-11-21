@@ -6,8 +6,19 @@ const router = express.Router();
 
 // POST route to save gameSession, required auth
 router.post("/save", authRequired, async (req, res) => {
-  const game = await GameSession.create({ userId: req.userId, ...req.body });
-  res.json(game);
+  try {
+    const game = await GameSession.create({
+      userId: req.userId,
+      baseWord: req.body.baseWord,
+      foundWords: req.body.foundWords,
+      totalScore: req.body.totalScore,
+      difficulty: req.body.difficulty,
+      language: req.body.language,
+    });
+    res.json(game);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 // GET route to get sessions data, required auth

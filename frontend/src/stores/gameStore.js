@@ -28,7 +28,7 @@ const initialGameState = {
 function getTimeByDifficulty(diff) {
   const timeByDifficulty = {
     easy: 600,
-    medium: 5, // 5 sec for test
+    medium: 10, // 5 sec for test
     hard: 300,
   };
   return timeByDifficulty[diff] || 480;
@@ -157,16 +157,14 @@ export const useGameStore = create((set, get) => ({
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          gameData: {
-            baseWord: gameData.baseWordId,
-            foundWords: gameData.foundWords.map((foundWord) => ({
-              word: foundWord.word,
-              score: foundWord.score,
-            })),
-            totalScore: gameData.totalScore,
-            difficulty: gameData.difficulty,
-            language: gameData.language,
-          },
+          baseWord: gameData.baseWordId,
+          foundWords: gameData.foundWords.map((foundWord) => ({
+            word: foundWord.word,
+            score: foundWord.score,
+          })),
+          totalScore: gameData.totalScore,
+          difficulty: gameData.difficulty,
+          language: gameData.language,
         }),
       });
 
@@ -180,7 +178,7 @@ export const useGameStore = create((set, get) => ({
       console.log("Game successfully saved to server:", savedGame);
       return savedGame;
     } catch (e) {
-      console.error("Error saving game to server:", error);
+      console.error("Error saving game to server:", e);
     }
   },
 
