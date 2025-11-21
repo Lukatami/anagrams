@@ -1,14 +1,10 @@
-import { useGlobalStore } from "../../stores/globalStore.js";
 import Language from "./Language.jsx";
-import ReturnToMenuButton from "./ReturnToMenuButton.jsx";
 
-function SettingsMenu({}) {
-  const { appStage } = useGlobalStore();
-
+function SettingsMenu() {
   return (
-    <div className="settings">
+    <div>
+      <h2>Settings</h2>
       <Language />
-      {appStage === "main" ? "" : <ReturnToMenuButton />}
     </div>
   );
 }

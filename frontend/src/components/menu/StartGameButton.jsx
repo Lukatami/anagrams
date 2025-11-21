@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { useGlobalStore } from "../../stores/globalStore.js";
 import { useGameStore } from "../../stores/gameStore.js";
 
 import { texts } from "../../data/texts.js";
 
 function StartGameButton() {
-  const { interfaceLanguage, settingsShow, toggleSettingsShow, setGameStage } =
+  const navigate = useNavigate();
+  const { interfaceLanguage} =
     useGlobalStore();
   const { gameLanguage, gameDifficulty, startGame } = useGameStore();
 
@@ -12,19 +14,14 @@ function StartGameButton() {
 
   async function handleStartGame() {
     try {
-      if (settingsShow) toggleSettingsShow();
-      setGameStage();
       await startGame(gameLanguage, gameDifficulty);
+      navigate("/game");
     } catch (error) {
       console.error("Failed to start game:", error);
     }
   }
 
-  return (
-    <button className="start-button" onClick={handleStartGame}>
-      {text.startGame}
-    </button>
-  );
+  return <button onClick={handleStartGame}>{text.startGame}</button>;
 }
 
 export default StartGameButton;

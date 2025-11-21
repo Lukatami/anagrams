@@ -16,7 +16,7 @@ function GameDifficulty() {
 
   return (
     <div className="difficulty-selection">
-      <p>{text.chooseDifficulty}</p>
+      <p>{text.chooseDifficulty}:</p>
       <div className="difficulty-buttons">
         {difficulties.map((diff) => (
           <button

@@ -19,7 +19,7 @@ function GameLanguage() {
 
   return (
     <div className="flags">
-      <p>{text.chooseGameLanguage}</p>
+      <p>{text.chooseGameLanguage}:</p>
       {languages.map((lang) => (
         <button
           key={lang.code}

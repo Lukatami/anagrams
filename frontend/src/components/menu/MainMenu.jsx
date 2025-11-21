@@ -1,16 +1,11 @@
-import { useGlobalStore } from "../../stores/globalStore.js";
-import { texts } from "../../data/texts.js";
 import GameDifficulty from "./GameDifficulty.jsx";
 import StartGameButton from "./StartGameButton.jsx";
 import GameLanguage from "./GameLanguage.jsx";
 
-function MainMenu({}) {
-  const { interfaceLanguage } = useGlobalStore();
-
-  const text = texts[interfaceLanguage];
-
+function MainMenu() {
   return (
-    <div className="mainMenu">
+    <div className="main-menu">
+      <h2>Setup your Game!</h2>
       <GameDifficulty />
       <GameLanguage />
       <StartGameButton />

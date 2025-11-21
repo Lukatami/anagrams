@@ -1,20 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useGlobalStore } from "../../stores/globalStore.js";
 import { texts } from "../../data/texts.js";
 
 function SettingsButton() {
-  const { toggleSettingsShow, interfaceLanguage } = useGlobalStore();
-
+  const navigate = useNavigate();
+  const { interfaceLanguage } = useGlobalStore();
   const text = texts[interfaceLanguage];
 
   function handleShowSetting() {
-    toggleSettingsShow();
+    navigate("/settings");
   }
 
-  return (
-    <div className="settings-button">
-      <button onClick={handleShowSetting}>{text.settings}</button>
-    </div>
-  );
+  return <button onClick={handleShowSetting}>{text.settings}</button>;
 }
 
 export default SettingsButton;

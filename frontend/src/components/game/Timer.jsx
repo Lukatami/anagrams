@@ -1,27 +1,22 @@
 import { useEffect } from "react";
-
 import { useGameStore } from "../../stores/gameStore";
-import { useGlobalStore } from "../../stores/globalStore";
 
 function Timer() {
-  const { timeLeft, decrementTime, isGameActive } = useGameStore();
-  const { setGameOverStage, appStage } = useGlobalStore();
+  const { timeLeft, decrementTime, isGameActive, endGame, gameOver } =
+    useGameStore();
 
   useEffect(() => {
-    if (!isGameActive || timeLeft <= 0) return;
+    if (!isGameActive || gameOver || timeLeft <= 0) return;
 
-    const timer = setInterval(() => {
-      decrementTime();
-    }, 1000);
-
+    const timer = setInterval(() => decrementTime(), 1000);
     return () => clearInterval(timer);
-  }, [timeLeft, isGameActive, decrementTime]);
+  }, [timeLeft, isGameActive, gameOver, decrementTime]);
 
   useEffect(() => {
-    if (timeLeft <= 0) {
-      setGameOverStage();
+    if (timeLeft === 0 && isGameActive && !gameOver) {
+      endGame();
     }
-  }, [timeLeft, setGameOverStage, appStage]);
+  }, [timeLeft, isGameActive, gameOver, endGame]);
 
   function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);

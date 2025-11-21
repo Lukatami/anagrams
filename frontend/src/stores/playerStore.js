@@ -107,6 +107,52 @@ export const usePlayerStore = create(
         localStorage.removeItem("auth_token");
         set(initialPlayerState);
       },
+
+      updatePlayerName: async (newName) => {
+        const { authToken, isLoggedIn } = get();
+
+        if (!isLoggedIn || !authToken) {
+          throw new Error("User must be logged in to update name");
+        }
+
+        const trimmed = newName.trim();
+
+        if (!trimmed) {
+          throw new Error("Name cannot be empty");
+        }
+
+        if (trimmed.length > 50) {
+          throw new Error("Name is too long (max 50 characters)");
+        }
+
+        try {
+          const BASE_API_URL =
+            import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+          const response = await fetch(`${BASE_API_URL}/api/users/name`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+            body: JSON.stringify({ name: trimmed }),
+          });
+
+          if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            throw new Error(err.error || "Failed to update name");
+          }
+
+          const data = await response.json();
+
+          set({ playerName: data.data.name });
+
+          return data.data.name;
+        } catch (error) {
+          console.error("Failed to update player name:", error);
+          throw error;
+        }
+      },
     }),
     {
       name: "player-store",

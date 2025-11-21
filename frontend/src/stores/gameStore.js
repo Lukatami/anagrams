@@ -11,6 +11,7 @@ const initialGameState = {
   loadingError: null,
 
   isGameActive: false,
+  gameOver: false,
   timeLeft: 480,
 
   currentGame: {
@@ -28,7 +29,7 @@ const initialGameState = {
 function getTimeByDifficulty(diff) {
   const timeByDifficulty = {
     easy: 600,
-    medium: 10, // 5 sec for test
+    medium: 5, // 5 sec for test
     hard: 300,
   };
   return timeByDifficulty[diff] || 480;
@@ -51,6 +52,7 @@ export const useGameStore = create((set, get) => ({
       timeLeft: getTimeByDifficulty(diff),
       // Game is active
       isGameActive: true,
+      gameOver: false,
       // Set settings and initial states for currentGame
       currentGame: {
         startTime: new Date(),
@@ -143,7 +145,7 @@ export const useGameStore = create((set, get) => ({
       }
     }
     // Deactivate Game
-    set({ isGameActive: false });
+    set({ gameOver: true });
   },
 
   saveGameToServer: async (gameData, token) => {
@@ -207,7 +209,8 @@ export const useGameStore = create((set, get) => ({
       // call endGame method to saveHistory and deactivate game
       get().endGame();
       // set timeLeft to 0
-      return set({ timeLeft: 0 });
+      set({ timeLeft: 0 });
+      return;
     }
     // Decrement
     set({ timeLeft: timeLeft - 1 });

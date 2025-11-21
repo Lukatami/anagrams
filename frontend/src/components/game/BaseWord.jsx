@@ -6,11 +6,11 @@ function BaseWord() {
   const { availableLetters, addLetter, usedLetters } = useWordsStore();
 
   return (
-    <div className="base-word">
-      <div className="base-word-info">
+    <div>
+      <div>
         <h3>Base Word: {currentGame.baseWord}</h3>
       </div>
-      <div className="letters-container">
+      <div>
         {availableLetters.map((letter, index) => {
           const isUsed = usedLetters.has(index);
 

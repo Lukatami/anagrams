@@ -29,4 +29,60 @@ router.get("/history", authRequired, async (req, res) => {
   res.json(sessions);
 });
 
+router.get("/leaderboard", async (req, res) => {
+  try {
+    const leaderboard = await GameSession.aggregate([
+      {
+        $group: {
+          _id: "$userId",
+          totalScore: { $sum: "$totalScore" },
+          totalGames: { $sum: 1 },
+          averageScore: { $avg: "$totalScore" },
+          bestScore: { $max: "$totalScore" },
+          lastPlayed: { $max: "$createdAt" },
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "_id",
+          foreignField: "_id",
+          as: "userInfo",
+        },
+      },
+      {
+        $unwind: "$userInfo",
+      },
+      {
+        $project: {
+          _id: 1,
+          userName: "$userInfo.name",
+          userAvatar: "$userInfo.avatarUrl",
+          totalScore: 1,
+          totalGames: 1,
+          averageScore: { $round: ["$averageScore", 2] },
+          bestScore: 1,
+          lastPlayed: 1,
+        },
+      },
+      {
+        $sort: {
+          totalScore: -1,
+        },
+      },
+    ]);
+
+    res.json({
+      
+      leaderboard,
+    });
+  } catch (error) {
+    console.error("Error fetching leaderboard:", error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+});
+
 export default router;

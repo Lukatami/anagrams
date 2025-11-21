@@ -1,20 +1,32 @@
+import { useGameStore } from "../../stores/gameStore";
+import Timer from "./Timer";
 import BaseWord from "./BaseWord";
 import PlayerWord from "./PlayerWord";
-import Timer from "./Timer";
 import Controls from "./Controls";
 import FoundWords from "./FoundWords";
 import PlayerScore from "./PlayerScore";
+import GameOver from "./GameOver";
 
 function GameBoard() {
+  const { gameOver, isGameActive } = useGameStore();
+
+  if (!isGameActive && !gameOver) {
+    return null;
+  }
 
   return (
-    <div className="game-board">
-      <Timer />
-      <BaseWord />
-      <PlayerWord />
-      <Controls />
-      <FoundWords />
-      <PlayerScore />
+    <div>
+      {!gameOver && (
+        <>
+          <Timer />
+          <BaseWord />
+          <PlayerWord />
+          <Controls />
+          <FoundWords />
+          <PlayerScore />
+        </>
+      )}
+      {gameOver && <GameOver />}
     </div>
   );
 }

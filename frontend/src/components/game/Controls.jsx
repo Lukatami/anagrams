@@ -2,12 +2,13 @@ import { useGameStore } from "../../stores/gameStore.js";
 import { useWordsStore } from "../../stores/wordsStore.js";
 
 function Controls() {
-  const { currentGame, gameLanguage, gameDifficulty, submitWord } =
+  const { currentGame, gameLanguage, gameDifficulty, submitWord, isGameActive } =
     useGameStore();
   const { playerWord, checkPlayerWord, resetPlayerWord, isCheckLoading } =
     useWordsStore();
 
   async function handleReadyButtonClick() {
+    if (!isGameActive) return;
     if (playerWord.trim() && !isCheckLoading) {
       try {
         const isDuplicate = currentGame.foundWords.some(

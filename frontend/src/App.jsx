@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useGlobalStore } from "./stores/globalStore";
-import MainBoard from "./components/app/MainBoard";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   const { autoLogin } = useGlobalStore();
@@ -9,13 +9,7 @@ function App() {
     autoLogin();
   }, [autoLogin]);
 
-  return (
-    <div className="App">
-      <>
-        <MainBoard />
-      </>
-    </div>
-  );
+  return <AppRouter />;
 }
 
 export default App;
