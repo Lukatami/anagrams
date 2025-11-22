@@ -50,4 +50,12 @@ const GameSessionSchema = new Schema(
   { timestamps: true }
 );
 
+GameSessionSchema.index({ userId: 1, createdAt: -1 });
+GameSessionSchema.index({ createdAt: -1 });
+GameSessionSchema.index({ totalScore: -1, createdAt: -1 });
+GameSessionSchema.index({ language: 1, difficulty: 1, totalScore: -1 });
+GameSessionSchema.index({ baseWord: 1 });
+GameSessionSchema.index({ userId: 1, language: 1, totalScore: -1 });
+GameSessionSchema.index({ language: 1, difficulty: 1, createdAt: -1 });
+
 export default mongoose.model("GameSession", GameSessionSchema);

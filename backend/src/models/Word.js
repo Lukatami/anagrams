@@ -14,21 +14,8 @@ const WordSchema = new Schema(
   { timestamps: true }
 );
 
-WordSchema.pre("save", async function (next) {
-  if (this.isNew) {
-    const existingWord = await mongoose.model("Word").findOne({
-      word: this.word,
-      lang: this.lang,
-    });
-    if (existingWord) {
-      const error = new Error(
-        `Word: "${this.word}" for "${this.lang}" language already exists in DB`
-      );
-      error.existingWord = existingWord;
-      return next(error);
-    }
-  }
-  next();
-});
+WordSchema.index({ word: 1, lang: 1 }, { unique: true, background: true });
+WordSchema.index({ lang: 1 }, { background: true });
+WordSchema.index({ lang: 1, reqCount: -1 }, { background: true });
 
 export default mongoose.model("Word", WordSchema);

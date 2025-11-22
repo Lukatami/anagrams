@@ -16,11 +16,12 @@ const UserSchema = new Schema(
         message: "Name cannot be empty",
       },
     },
-    email: { type: String },
     avatarUrl: { type: String },
     googleId: { type: String, required: true, unique: true },
   },
   { timestamps: true }
 );
+
+UserSchema.index({ googleId: 1 }, { unique: true });
 
 export default mongoose.model("User", UserSchema);

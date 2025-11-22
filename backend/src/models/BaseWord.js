@@ -14,21 +14,6 @@ const BaseWordSchema = new Schema(
   { timestamps: true }
 );
 
-BaseWordSchema.pre("save", async function (next) {
-  if (this.isNew) {
-    const existingBaseWord = await mongoose.model("BaseWord").findOne({
-      baseWord: this.baseWord,
-      lang: this.lang,
-    });
-    if (existingBaseWord) {
-      const error = new Error(
-        `Word: "${this.baseWord}" for "${this.lang}" language already exists in DB`
-      );
-      error.existingBaseWord = existingBaseWord;
-      return next(error);
-    }
-  }
-  next();
-});
+BaseWordSchema.index({ lang: 1 });
 
 export default mongoose.model("BaseWord", BaseWordSchema);
