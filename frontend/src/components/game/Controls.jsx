@@ -48,11 +48,16 @@ function Controls() {
   }
 
   return (
-    <div className="controls">
+    <div className="flex justify-center gap-6 mt-4">
       <button
         onClick={handleReadyButtonClick}
         disabled={!playerWord.trim() || isCheckLoading}
-        className="control-button submit-button"
+        className={`
+          w-16 h-16 rounded-2xl font-bold text-2xl transition flex items-center justify-center
+          ${playerWord.trim() && !isCheckLoading
+            ? "bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white shadow-lg"
+            : "bg-gray-600 text-gray-300 cursor-not-allowed"}
+        `}
         title="Submit word"
       >
         {isCheckLoading ? "⏳" : "✅"}
@@ -60,7 +65,12 @@ function Controls() {
       <button
         onClick={handleResetPlayerWordClick}
         disabled={!playerWord.trim()}
-        className="control-button reset-button"
+        className={`
+          w-16 h-16 rounded-2xl font-bold text-2xl transition flex items-center justify-center
+          ${playerWord.trim()
+            ? "bg-red-500 hover:bg-red-600 active:scale-95 text-white shadow-lg"
+            : "bg-gray-600 text-gray-300 cursor-not-allowed"}
+        `}
         title="Clear word"
       >
         ❌

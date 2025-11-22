@@ -18,7 +18,7 @@ function GameLanguage() {
   }
 
   return (
-    <div className="language-selection flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full">
       <p className="text-white/90 text-lg font-semibold mb-4 text-center">
         {text.chooseGameLanguage}:
       </p>

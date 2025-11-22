@@ -15,7 +15,7 @@ function GameDifficulty() {
   }
 
   return (
-    <div className="difficulty-selection flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full">
       <p className="text-white/90 text-lg font-semibold mb-4">
         {text.chooseDifficulty}
       </p>
