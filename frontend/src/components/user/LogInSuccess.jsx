@@ -39,8 +39,9 @@ function LoginSuccess() {
   }, [navigate, searchParams, logIn, autoLogin]);
 
   return (
-    <div className="login-success">
-      <p>Processing login...</p>
+    <div className="flex items-center justify-center min-h-screen px-6">
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg rounded-2xl p-6 text-center">
+      <p className="text-white text-lg font-medium animate-pulse">Processing login...</p></div>
     </div>
   );
 }

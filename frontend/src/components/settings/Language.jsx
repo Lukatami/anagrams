@@ -16,17 +16,34 @@ function Language() {
   }
 
   return (
-    <div className="flags">
-      <p>{text.chooseInterfaceLanguage}</p>
-      {languages.map((lang) => (
-        <button
-          key={lang.code}
-          onClick={(e) => handleLanguageButtonClick(lang.code, e)}
-          className={interfaceLanguage === lang.code ? "active" : ""}
-        >
-          <ReactCountryFlag countryCode={lang.flag} svg />
-        </button>
-      ))}
+    <div className="flex flex-col items-center gap-4 p-4">
+      <p className="text-lg font-semibold text-white drop-shadow">
+        {text.chooseInterfaceLanguage}
+      </p>
+      <div className="flex gap-3">
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            onClick={(e) => handleLanguageButtonClick(lang.code, e)}
+            className={`w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-xl shadow-md transition 
+              hover:bg-white/20 
+              ${
+                interfaceLanguage === lang.code
+                  ? "border-2 border-red-500 scale-110"
+                  : "border border-white/20"
+              }`}
+          >
+            <ReactCountryFlag
+              countryCode={lang.flag}
+              style={{
+                width: "2rem",
+                height: "2rem",
+              }}
+              svg
+            />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
