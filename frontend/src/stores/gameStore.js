@@ -5,7 +5,7 @@ import { usePlayerStore } from "./playerStore";
 // Initial Game State
 const initialGameState = {
   gameDifficulty: "medium", // "medium" for test
-  gameLanguage: "ru", // "ru" for test
+  gameLanguage: "en", // "ru" for test
 
   isGameLoading: false,
   loadingError: null,
@@ -102,12 +102,12 @@ export const useGameStore = create((set, get) => ({
     set((state) => {
       // Adding wordObj to current array of foundWords
       const newFoundWords = [
-        ...state.currentGame.foundWords,
         {
           word: playerWord,
           score: score,
           timestamp: ts,
         },
+        ...state.currentGame.foundWords,
       ];
 
       // Recalculate totalScore adding wordObj score

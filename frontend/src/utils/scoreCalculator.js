@@ -13,9 +13,10 @@ export function scoreCalculator(word, difficulty) {
     4: 2,
     5: 3,
     6: 4,
+    7: 5
   };
 
-  let baseScore = baseScores[length] || (length >= 7 ? 5 : 0);
+  let baseScore = baseScores[length] || (length >= 8 ? 7 : 0);
 
   const multipliers = {
     easy: 1,

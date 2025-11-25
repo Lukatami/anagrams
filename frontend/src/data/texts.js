@@ -23,12 +23,13 @@ export const texts = {
     foundWords: "Found words",
     leaderBoard: "Leaderboard",
     topPlayers: "Top Players",
-    totalGames: "Total Games:",
-    totalScore: "Total Score:",
+    totalGames: "Total Games",
+    totalScore: "Total Score",
     yourRank: "Your Rank",
     logToSeeYourRank: "Log in to see your rank",
     loginProcessing: "Processing login...",
     guestMode: "You are in guest mode",
+    found: "found",
     difficulties: {
       easy: "Easy",
       medium: "Medium",
@@ -77,6 +78,7 @@ export const texts = {
       "Войдите в свою учетную запись, чтобы видеть таблицу лидеров!",
     loginProcessing: "Обработка входа в аккаунт...",
     guestMode: "Вы в гостевом режиме",
+    found: "найдено",
     difficulties: {
       easy: "Легкий",
       medium: "Средний",
@@ -124,6 +126,7 @@ export const texts = {
     logToSeeYourRank: "Inicie sesión para ver su clasificación",
     loginProcessing: "Procesando inicio de sesión...",
     guestMode: "Estás en modo invitado",
+    found: "encontrado",
     difficulties: {
       easy: "Fácil",
       medium: "Medio",
